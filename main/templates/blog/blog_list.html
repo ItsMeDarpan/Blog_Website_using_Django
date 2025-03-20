@@ -1,0 +1,8 @@
+{% for post in posts %}
+    <h2><a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a></h2>
+    <p>{{ post.content|truncatewords:30 }}</p>
+    {% if post.image %}
+        <img src="{{ post.image.url }}" width="300">
+    {% endif %}
+    <hr>
+{% endfor %}

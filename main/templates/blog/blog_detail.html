@@ -1,0 +1,5 @@
+<h1>{{ post.title }}</h1>
+<p>{{ post.content }}</p>
+{% if post.image %}
+    <img src="{{ post.image.url }}" width="500">
+{% endif %}
