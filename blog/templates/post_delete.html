@@ -1,0 +1,7 @@
+<h2>Do you want to delete {{post.title}}</h2>
+<form method = "POST">
+    {% csrf_token %}
+    <button type = "submit">Delete</button>
+    </form>
+</form>
+<a href = "{% url 'homepage'%}"><button>Cancel</button></a>
