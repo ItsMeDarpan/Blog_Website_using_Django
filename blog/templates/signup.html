@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .signup_container {
+            width: 300px;
+            background-color: #f3f3f3;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .signup_container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .inputs {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .signup_container label {
+            font-size: 16px;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .signup_container input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup_container">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Sign Up</h2>
+            <div class="inputs">
+                <label for="username">Username</label>
+                <input type="text" name="username"  id="username" required>
+            </div>
+            <div class="inputs">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            <div class="inputs">
+                <label for="password">Password</label>
+                <input type="password" name="password1" id="password" required>
+            </div>
+            <div class="inputs">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" name = "password2" id="confirm_password" required>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>

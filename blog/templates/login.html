@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login_container {
+            width: 260px;
+            background-color: f3f3f3;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login_container h2 {
+            margin-top: 0px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .inputs{
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .login_container label {
+            font-size: 18px;
+            padding: 3px;
+            display: block;
+        }
+        .login_container input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;        }
+        button{
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: 1px solid #ccc;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class = "login_container">
+        <form method = "POST">
+            <h2>Sign In</h2>
+            <div class="inputs">
+                <label for = "username">Username</label>
+                <input type = "text" id = "username" required>
+            </div>
+            <div class="inputs">
+                <label for = "pasword">Password</label>
+                <input type = "password" id = "password" required>
+            </div>
+            <button type = "submit">Login</button>
+
+
+        </form>
+    </div>
+</body>
+</html>
