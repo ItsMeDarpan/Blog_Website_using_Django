@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     {% include 'header.html' %}
-    {%for post in posts %}
-    <div>
-        <a href="{% url 'post_detail' post.pk %}"><h2 align = "center">{{post.title}}</h2></a>
-        <span>{{post.author}}</span>
-        <span>Published:{{post.created}}</span>
-        <a href = "{% url 'update_post' post.pk%}">Edit</a>
-        <a href = "{% url 'delete_post' post.pk%}">Delete</a>
-        <p>{{post.content}}</p>
+    {% block body%}
+    {% endblock %}
+    {% for post in posts %}
+    <div class="body-container">
+        <div class="dispaly-title">
+            <h2>{{post.title}}</h2>
+        </div>
+        <div class="meta-info">
+            <span>{{post.author}}</span>
+            <span>Published:{{post.created}}</span>
+        </div>
+      
+        {% if post.image %}
+        <div class="image-container">
+            <img src="{{post.image.url}}" alt="Blog Image">
+        </div>
+        {% endif %}
+        
+        <div class="content">
+            <div class="text">
+                <p>{{post.content}}</p>
+            </div>
+            
+        </div>
     </div>
     {% endfor %}
 </body>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post 
-from .forms import PostForm, signUpForm
+from .forms import PostForm, signUpForm, searchForm
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 
@@ -57,3 +57,12 @@ def register(request):
         form = signUpForm()
         return render(request, 'signup.html', {'form': form})
     
+def search(request):
+    form = searchForm(request.GET)
+    results = []
+
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        results = Post.objects.filer(name_icontains = query)
+
+    return render(request, 'your_template.html', {'form':form, 'results':results})

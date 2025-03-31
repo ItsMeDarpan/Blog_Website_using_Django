@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title','author','content']
+        fields = ['title','author','content', 'image']
 
 
 class signUpForm(forms.ModelForm):
@@ -26,3 +26,6 @@ class signUpForm(forms.ModelForm):
             raise forms.ValidationError("Passwords do not match")
         
         return cleaned_data
+    
+class searchForm(forms.Form):
+    query = forms.CharField(label = 'Search', max_length = 100)

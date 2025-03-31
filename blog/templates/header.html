@@ -1,24 +1,59 @@
-<head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'homepage' %}"">DjangoBytes</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'create_post' %}">post <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">profile</a>
-        </li>
-      </ul>
+{% load static %}
+<header>
+  <div class="container">
+    <div class="logo">
+      <a href="{% url 'homepage' %}">
+        <img
+          src="{% static 'images/logoEdited.png' %}"
+          alt="DjangoBytes"
+          height="180px"
+          width="200px"
+        />
+      </a>
     </div>
-  </nav>
+
+    <nav>
+      <div class="navigation-bar">
+        <ul>
+          <li>
+            <a href="{% url 'homepage' %}">
+              <img src="{% static 'images/home.svg' %}" height="24px" width="24px" alt="Home" />
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'create_post'%}">
+              <img src="{% static 'images/blog.svg' %}" height="24px" width="24px" alt="Blog" />
+              Post
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img
+                src="{% static 'images/contact.svg' %}"
+                height="24px"
+                width="24px"
+                alt="Contact"
+              />
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="right-container">
+      <!-- <form class="search-form">
+        <label for="search-bar">Search</label>
+        <input type="search" id="search-bar" />
+        <button type="submit" class="search-button">
+          <span class="visually-hidden">Search</span>
+        </button>
+      </form> -->
+
+      <a href="">
+        <img src="{% static 'images/account.png' %}" alt="Profile" height="32px" width="32px" />
+      </a>
+    </div>
+  </div>
+</header>
