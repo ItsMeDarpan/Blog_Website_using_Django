@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img src="{% static 'images/account.png' %}" alt="Profile" width="150" height="150">
+        </div>
+        <div class="profile-info">
+            <h1>{{ user.username }}</h1>
+            <p class="email">{{ user.email }}</p>
+            <p class="join-date">Member since {{ user.date_joined|date:"F Y" }}</p>
+        </div>
+    </div>
+
+    <div class="profile-stats">
+        <div class="stat-item">
+            <h3>Posts</h3>
+            <p>{{ user.post_set.count }}</p>
+        </div>
+        <div class="stat-item">
+            <h3>Comments</h3>
+            <p>0</p>
+        </div>
+        <div class="stat-item">
+            <h3>Likes</h3>
+            <p>0</p>
+        </div>
+    </div>
+
+    <div class="profile-content">
+        <h2>Your Posts</h2>
+        <div class="user-posts">
+            {% for post in user.post_set.all %}
+            <div class="post-card">
+                <h3>{{ post.title }}</h3>
+                <p class="post-date">{{ post.created|date:"F d, Y" }}</p>
+                <p class="post-excerpt">{{ post.content|truncatewords:30 }}</p>
+                <div class="post-actions">
+                    <a href="{% url 'post_detail' post.pk %}" class="read-more">Read More</a>
+                    <a href="{% url 'update_post' post.pk %}" class="edit-post">Edit</a>
+                    <a href="{% url 'delete_post' post.pk %}" class="delete-post">Delete</a>
+                </div>
+            </div>
+            {% empty %}
+            <p class="no-posts">You haven't created any posts yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

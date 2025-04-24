@@ -1,8 +1,31 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/create_post.css' %}">
+{% endblock %}
+
 {% block body %}
-<form method = "POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button type = "submit">Publish</button>
-</form>
+<div class="create-post-container">
+    <h2>{% if form.instance.pk %}Edit Post{% else %}Create New Post{% endif %}</h2>
+    <form method="POST" class="create-post-form">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <ul class="errorlist">
+                {% for error in field.errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button type="submit" class="submit-button">
+            {% if form.instance.pk %}Update{% else %}Publish{% endif %}
+        </button>
+    </form>
+</div>
 {% endblock %}

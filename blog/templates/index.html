@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>{% block title %}Blog{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     {% include 'header.html' %}
-    {% block body%}
-    {% endblock %}
-    {% for post in posts %}
-    <div class="body-container">
-        <div class="dispaly-title">
-            <h2>{{post.title}}</h2>
-        </div>
-        <div class="meta-info">
-            <span>{{post.author}}</span>
-            <span>Published:{{post.created}}</span>
-        </div>
-      
-        {% if post.image %}
-        <div class="image-container">
-            <img src="{{post.image.url}}" alt="Blog Image">
-        </div>
-        {% endif %}
-        
-        <div class="content">
-            <div class="text">
-                <p>{{post.content}}</p>
+    {% block body %}
+        {% for post in posts %}
+        <div class="body-container">
+            <div class="dispaly-title">
+                <h2>{{post.title}}</h2>
             </div>
+            <div class="meta-info">
+                <span>{{post.author}}</span>
+                <span>Published:{{post.created}}</span>
+            </div>
+          
+            {% if post.image %}
+            <div class="image-container">
+                <img src="{{post.image.url}}" alt="Blog Image">
+            </div>
+            {% endif %}
             
+            <div class="content">
+                <div class="text">
+                    <p>{{post.content}}</p>
+                </div>
+            </div>
         </div>
-    </div>
-    {% endfor %}
+        {% endfor %}
+    {% endblock %}
 </body>
 </html>

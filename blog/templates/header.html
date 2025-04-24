@@ -21,14 +21,16 @@
               Home
             </a>
           </li>
+          {% if user.is_authenticated %}
           <li>
             <a href="{% url 'create_post'%}">
               <img src="{% static 'images/blog.svg' %}" height="24px" width="24px" alt="Blog" />
               Post
             </a>
           </li>
+          {% endif %}
           <li>
-            <a href="#">
+            <a href="{% url 'contact' %}">
               <img
                 src="{% static 'images/contact.svg' %}"
                 height="24px"
@@ -41,7 +43,6 @@
         </ul>
       </div>
     </nav>
-
     <div class="right-container">
       <!-- <form class="search-form">
         <label for="search-bar">Search</label>
@@ -51,9 +52,41 @@
         </button>
       </form> -->
 
-      <a href="">
-        <img src="{% static 'images/account.png' %}" alt="Profile" height="32px" width="32px" />
-      </a>
+      {% if user.is_authenticated %}
+        <div class="profile-dropdown">
+          <button class="profile-button">
+            <img src="{% static 'images/account.png' %}" alt="Profile" height="32px" width="32px" />
+            <span>{{ user.username }}</span>
+            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="dropdown-content">
+            <a href="{% url 'dashboard' %}" class="dropdown-item">
+              <img src="{% static 'images/dashboard.svg' %}" alt="Dashboard" />
+              Dashboard
+            </a>
+            <a href="{% url 'profile' %}" class="dropdown-item">
+              <img src="{% static 'images/profile.svg' %}" alt="Profile" />
+              Profile
+            </a>
+            <a href="{% url 'settings' %}" class="dropdown-item">
+              <img src="{% static 'images/settings.svg' %}" alt="Settings" />
+              Settings
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="{% url 'logout' %}" class="dropdown-item">
+              <img src="{% static 'images/logout.svg' %}" alt="Logout" />
+              Logout
+            </a>
+          </div>
+        </div>
+      {% else %}
+        <div class="auth-buttons">
+          <a href="{% url 'login' %}" class="login-btn">Login</a>
+          <a href="{% url 'register' %}" class="register-btn">Create Account</a>
+        </div>
+      {% endif %}
     </div>
-  </div>
+    
 </header>
