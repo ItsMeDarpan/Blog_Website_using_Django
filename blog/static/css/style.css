@@ -13,6 +13,8 @@ header {
     width: 100%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    height: 70px;
+    display: flex;
 }
 
 .container {
@@ -20,21 +22,21 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .logo {
-    display: flex;
     align-items: center;
 }
 
 .logo img {
-    height: 50px;
+    height: 70px;
     width: auto;
     object-fit: contain;
 }
-
+.nav-container{
+    margin-left: 10vw;
+}
 .navigation-bar ul {
     display: flex;
     list-style: none;
@@ -68,7 +70,7 @@ header {
 .right-container {
     display: flex;
     height: 80px;
-    width: auto;
+    margin-left: auto;
   
 }
 
@@ -92,7 +94,7 @@ header {
     z-index: 1000;
     opacity: 0;
     transform: translateY(0);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 
