@@ -27,12 +27,14 @@ header {
 
 .logo {
     align-items: center;
+    margin-left:20px;
 }
 
 .logo img {
     height: 70px;
     width: auto;
     object-fit: contain;
+    transform: scale(2);
 }
 .nav-container{
     margin-left: 10vw;
